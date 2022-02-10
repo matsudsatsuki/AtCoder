@@ -2,21 +2,38 @@ from this import d
 
 
 def resolve():
+    #result(TLE)
+    #import sys
+    #input = sys.stdin.readline
+
     N,M = map(int,input().split())
     #default_list = {int(i):False for i in range(1,N+1)}
     #print(default_list)
-    ans_list = set()
+    #ans_list = set()
+    #for i in range(M):
+        #a,b = map(int,input().split())
+        #if i == 0:
+            #tmp = (int(i) for i in range(a,b+1))
+            #ans_list = set(tmp)
+            #continue
+        #else:
+            #tmp = (int(i) for i in range(a,b+1))
+            #ans_list = ans_list & set(tmp)
+    #print(len(ans_list))
+    L_list = []
+    R_list = []
+
     for i in range(M):
-        a,b = map(int,input().split())
-        if i == 0:
-            tmp = [int(i) for i in range(a,b+1)]
-            ans_list = set(tmp)
-            continue
-        else:
-            tmp = [int(i) for i in range(a,b+1)]
-            ans_list = ans_list & set(tmp)
+        l,r = map(int,input().split())
+        L_list.append(l)
+        R_list.append(r)
     
-    print(len(ans_list))
+    mi = max(L_list)
+    ma = min(R_list)
+    
+    ans = abs(ma-mi)+1
+    print(ans)
+    
             
         
         
