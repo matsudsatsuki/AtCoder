@@ -1,55 +1,22 @@
-from curses import beep
-
 
 def resolve():
     N,M = map(int,input().split())
-    break_list = []
-    for i in range(M):
-        a = int(input())
-        break_list.append(a)
-    #print(break_list)
-    stairs = []
-    for i in range(N+1):
-        if i in break_list:
-            stairs.append(False)
-            continue
-        else:
-            stairs.append(i)
-    j = 1
-    ans = 0
-    ans_list = []
-    flag = False
-    for i in range(1,N+1):
-        if stairs[i] == False:
-            if stairs[i+1] == False:
-                ans = 0
-                break
-            else:
-                flag = True
-                j = 1
-                ans_list.append(ans)
-                ans = 0
-                continue
-        else:
-            ans += j
-            j += 1
+    mod = 1e9+7
+    stairs = [True]*(N+1)
+    for _ in range(M):
+        broken = int(input())
+        stairs[broken] = False
+    dp = [0]*(N+1)
+    dp[0] = 1
+    for now in range(N):
+        for next in range(now+1,min(N+1,now+3)):
+            if stairs[next]:
+                dp[next] += dp[now]
+                dp[next] %= mod
+    print(int(dp[N]))
 
 
-    
-    tmp_ans = 1
-    if flag and ans != 0:
-        for i in range(len(ans_list)):
-            tmp_ans *= ans_list[i]
-        fin_ans = tmp_ans%1000000007
-        print(fin_ans)
-    
-        
-    elif ans != 0:
-        fin_ans = ans%1000000007
-        print(fin_ans)
-    else:
-        print(ans)
-    
+
             
     
     
