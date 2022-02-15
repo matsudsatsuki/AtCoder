@@ -1,42 +1,27 @@
-from os import times
 from matplotlib.pyplot import flag
-from sqlalchemy import false
-from sympy import principal_branch
 
 
 def resolve():
     N = int(input())
-    time_list = []
-    close_time = []
-    deadline = []
-    for _ in range(N):
+    work_list = [0]*N
+    for i in range(N):
         a,b = map(int,input().split())
-        time_list.append(a)
-        close_time.append(b)
-        c = b-a
-        deadline.append(c)
-    deadlines = []
-    for k,v in zip(deadline,time_list):
-        deadlines.append((k,v))
-    time = max(close_time)
-    deadlines.sort(key=lambda x: x[0])
+        work_list[i] = (b,a)
+    work_list.sort()
+    #print(work_list)
     count = 0
     flag = True
-    for e_deadline,times in deadlines:
-        if count > e_deadline:
+    for deadline,w_time in work_list:
+        count += w_time
+        if count > deadline:
             flag = False
-        count += times 
+            break
+        #print(count)
+        
     if flag:
-        print('Yes') 
+        print('Yes')
     else:
         print('No')
-    
-
-
-    
-    
-
-
 
 
 
