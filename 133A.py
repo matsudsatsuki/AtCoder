@@ -1,10 +1,8 @@
 def resolve():
-    N,K = map(int,input().split())
-    for i in range(1,N+1):
-        if i == 1:
-            print(N-K+1)
-        else:
-            print()
+    N,A,B = map(int,input().split())
+    ans = min(A*N,B)
+    print(ans)
+
 
 
 
@@ -28,17 +26,18 @@ class TestClass(unittest.TestCase):
         self.assertEqual(out, output)
 
     def test_入力例_1(self):
-        input = """5 3"""
-        output = """3
-6
-1"""
+        input = """4 2 9"""
+        output = """8"""
         self.assertIO(input, output)
 
     def test_入力例_2(self):
-        input = """2000 3"""
-        output = """1998
-3990006
-327341989"""
+        input = """4 2 7"""
+        output = """7"""
+        self.assertIO(input, output)
+
+    def test_入力例_3(self):
+        input = """4 2 8"""
+        output = """8"""
         self.assertIO(input, output)
 
 

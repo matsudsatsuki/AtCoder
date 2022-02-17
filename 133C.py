@@ -1,10 +1,26 @@
+from ast import Break
+
+from matplotlib.pyplot import flag
+
+
 def resolve():
-    N,K = map(int,input().split())
-    for i in range(1,N+1):
-        if i == 1:
-            print(N-K+1)
-        else:
-            print()
+    L,R = map(int,input().split())
+    ans = 1e10
+    flag = False
+    for i in range(L,R+1):
+        for j in range(i+1,R+1):
+            if i*j < 2019:
+                ans = i*j
+                flag = True
+                break
+            else:
+                ans = min(ans,(i*j)%2019)
+                if ans == 0:
+                    flag = True
+                    break
+        if flag:
+            break
+    print(ans)
 
 
 
@@ -28,17 +44,13 @@ class TestClass(unittest.TestCase):
         self.assertEqual(out, output)
 
     def test_入力例_1(self):
-        input = """5 3"""
-        output = """3
-6
-1"""
+        input = """2020 2040"""
+        output = """2"""
         self.assertIO(input, output)
 
     def test_入力例_2(self):
-        input = """2000 3"""
-        output = """1998
-3990006
-327341989"""
+        input = """4 5"""
+        output = """20"""
         self.assertIO(input, output)
 
 
