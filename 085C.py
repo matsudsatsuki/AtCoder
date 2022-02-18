@@ -1,22 +1,25 @@
 from matplotlib.pyplot import flag
+from sqlalchemy import false
 
 
 def resolve():
     N,Y = map(int,input().split())
-    c = 0
-    flag = True
-    for i in range(N+1):
-        Y -= 10000*i
-        for j in range(N+1):
-            Y -= 5000*j
-            k = N - (i+j)
-            if 10000*i + 5000*j + 1000*k == Y:
-                print(i,j,k)    
-                flag = False
-                break
 
+    flag = True
+    ans_list = []
+    for i in range(N+1):
+        for j in range(N+1):
+            k = N - (i+j)
+            if k >= 0:
+                if 10000*i + 5000*j + 1000*k == Y:
+                    ans_list.append([i,j,k])
+                    flag = False
+                    break
+                if flag: continue
     if flag:
         print(-1,-1,-1)
+    else:
+        print(*ans_list[-1])
 
     
 

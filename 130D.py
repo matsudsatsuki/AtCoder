@@ -16,7 +16,7 @@ def resolve():
             count -= n_list[left]
             left += 1 
 
-
+        
             
     print(ans)
 
