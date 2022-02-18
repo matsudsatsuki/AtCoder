@@ -18,7 +18,8 @@ def resolve():
         next_flow = dam_pool[i]-(X[i]//2)
         X.append(next_flow*2)
 
-    print(' '.join(map(str,X)))
+    #print(' '.join(map(str,X)))
+    print(*X)
 
     
 
