@@ -9,7 +9,6 @@ def resolve():
             if G[y][x] == '#':
                 G[y][x] = INF
                 count += 1
-
             else:
                 G[y][x] = 1     
     #print(G)
@@ -55,7 +54,7 @@ def resolve():
 
     st = dijkstra(H,W,G,0,0,W-1,H-1)
     shortest = st.cost
-    if shortest == None:
+    if type(st) == None:
         print(-1)
     else:
         ans = (W*H)-shortest-count
