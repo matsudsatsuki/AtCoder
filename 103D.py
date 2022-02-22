@@ -1,29 +1,43 @@
 from re import A, S
+from turtle import right
 
 
 def resolve():
     N,M = map(int,input().split())
-    start = {}
-    end_to_start = {}
+    requests = [tuple(map(int,input().split()))for _ in range(M)]
+    #print(requests)
+    requests.sort()
+    right = requests[-1][1]
+    ans = 1
+    for a,b in requests:
+        if a >= right:
+            ans += 1
+            right = b
+        else:
+            right = min(right,b)
+    print(ans)
+            
+    #start = {}
+    #end_to_start = {}
 
-    for i in range(M):
-        a,b = map(int,input().split())
-        start[a] = b
-        end_to_start[b] = a
+    #for i in range(M):
+        #a,b = map(int,input().split())
+        #start[a] = b
+        #end_to_start[b] = a
 
-    ends = sorted(end_to_start,reverse=True)
+    #ends = sorted(end_to_start,reverse=True)
     #終点をソートして、それより右側に始点がなければ終了、あればそこから同じことを繰り返す（条件を満たし続ける限り終点最小を探し続ける）
     #a = ends.pop()
     #print(a)
-    ans = 1
-    while True:
-        end_p = ends.pop()
-        for island in start:
-            if island >= end_p:
-                ans += 1
-                continue
-        break
-    print(ans)
+    #ans = 1
+    #while True:
+        #end_p = ends.pop()
+        #for island in start:
+            #if island >= end_p:
+                #ans += 1
+                #continue
+        #break
+    #print(ans)
 
 
 
