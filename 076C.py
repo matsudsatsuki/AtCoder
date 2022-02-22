@@ -4,18 +4,40 @@ from matplotlib.pyplot import flag
 def resolve():
     S = input()
     T = input()
-    for i in range(len(S)):
-        if S[i] == T[0]:
-            for j in range(i,len(T)):
-                if S[j] != '?' or j+1 > len(S):
-                    flag = False
-                    break
-            if flag:
-                S.replace(S[i:],T)
+    n = len(S)
+    m = len(T)
+    p = -1
+    ans = []
+    for i in range(n-m+1):
+        flag = True
+        for j in range(i,i+m):
+            if S[j] == '?' or S[j] == T[j-i]:
+                continue
+            else:
+                flag = False
+                break
+        if flag:
+            p = i
+    flag2 = True
+    for i in range(n):
+        if p == -1:
+            print('UNRESTORABLE')
+            flag2 = False
+            break
+        if p <= i <= p+m-1:
+            ans.append(T[i-p])
+        elif S[i] == '?':
+            ans.append('a')
         else:
-            S.replace(S[i],'a')
+            ans.append(S[i])
+
+    if flag2:
+        print(''.join(ans))
+
+
+ 
     
-    print(S)
+    
 
                 
             
