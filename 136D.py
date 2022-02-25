@@ -1,4 +1,5 @@
 def resolve():
+    #途中
     S = input()
     children = [0 for i in range(len(S))]
     print(children)
