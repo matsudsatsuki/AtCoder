@@ -1,38 +1,21 @@
+from distutils.filelist import findall
 from itertools import count
+
+from cmd2 import ansi
 from matplotlib.pyplot import flag
 
 
 def resolve():
-    #import re
-    #S = input()
-    #count = 0
-    #while True:
-        #m = re.findall(r'BW',S)
-        #S = re.sub(r'BW','WB',S)
-        #if len(m) == 0:
-            #break
-        #else:
-            #count += len(m)
-    #print(count)
     S = input()
-    count = 0
-    check = 0
+    nums = [0 for _ in range(len(S)+1)]
     for i in range(len(S)):
-        if S[i] == 'B':
-            check += 1
-        elif S[i] == 'W':
-            count += check
-    print(count)
-
-
-
-
-
-
-
-
-
-
+        if S[i] == '<':
+            nums[i+1] = max(nums[i]+1,nums[i+1])
+    for j in range(-1,-len(S),-1):
+        if S[j] == '>':
+            nums[j-1] = max(nums[j-1],nums[j]+1)
+    print(sum(nums))
+    
 
 
 import sys
@@ -51,13 +34,13 @@ class TestClass(unittest.TestCase):
         self.assertEqual(out, output)
 
     def test_入力例_1(self):
-        input = """BBW"""
-        output = """2"""
+        input = """<>>"""
+        output = """3"""
         self.assertIO(input, output)
 
     def test_入力例_2(self):
-        input = """BWBWBW"""
-        output = """6"""
+        input = """<>>><<><<<<<>>><"""
+        output = """28"""
         self.assertIO(input, output)
 
 
