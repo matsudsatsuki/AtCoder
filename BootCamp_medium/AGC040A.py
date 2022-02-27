@@ -10,12 +10,12 @@ def resolve():
     nums = [0 for _ in range(len(S)+1)]
     for i in range(len(S)):
         if S[i] == '<':
-            nums[i+1] = max(nums[i]+1,nums[i+1])
-    for j in range(-1,-len(S),-1):
+            nums[i+1] = max(nums[i+1],nums[i]+1)
+    for j in range(-1,-len(S)-1,-1):
         if S[j] == '>':
             nums[j-1] = max(nums[j-1],nums[j]+1)
     print(sum(nums))
-    
+
 
 
 import sys
