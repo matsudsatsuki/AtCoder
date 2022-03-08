@@ -1,34 +1,26 @@
-from aem import con
-from matplotlib.pyplot import flag
+
 
 
 def resolve():
     N = int(input())
     n = 998244353
-    ans = 0
+    dp = [[1048576]*10]
+    for i in range(1,10):
+        dp[1][i] = 1    
+
     
-    for i in range(10**(N-1),10**N):
-        stri = str(i)
-        count = 1
-        if '0' in stri:
-            continue
-        
-        for j in range(1,N):
-            a = stri[j-1]
-            b = stri[j]
-            a = int(a)
-            b = int(b)
-            if abs(a-b) <= 1:
-                count += 1
-            else:
-                continue
-        if count == N:
-            ans += 1
-        else:
-            continue
-                
-    #print(stri)
-    print(ans%n)
+    for d in range(2,N+1):
+        for i in range(1,10):
+            for j in range(max(1,i-1),min(9,i-1)+1):
+                dp[d][j] += dp[d-1][j]
+                dp[d][j] %= n
+    res = 0
+    #for i in range(1,9):
+        #res += dp[N][i]
+        #res %= n
+    print(dp)
+    
+    
 
     
 
