@@ -1,5 +1,28 @@
+from itertools import count
+from tkinter.tix import Tree
+
+
 def resolve():
-    s = input()
+    s = list(map(ord,list(input())))
+    a = ord('a')
+    z = ord('z')
+    min_a = len(s)
+    for c in range(a,z+1):
+        max_a = -1
+        count = 0
+        for si in s:
+            if si == c:
+                max_a = max(max_a,count)
+                count = 0
+            else:
+                count += 1
+        max_a = max(max_a,count)
+        min_a = min(min_a,max_a)
+    print(min_a)
+    #for g in range(a,z+1):
+        #print(chr(g))
+        #a,b,c,d....
+
     
 
 
