@@ -3,12 +3,9 @@ from os import initgroups
 
 def resolve():
     H,W = map(int,input().split())
-    ans = 0
-    y = 0
-    x = 0
-    #while True:
+    print((int((H*W+1)/2) if not (H == 1 or W == 1) else 1))
 
-        
+    
 
 
 
