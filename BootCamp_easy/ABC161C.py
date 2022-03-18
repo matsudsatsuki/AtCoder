@@ -1,21 +1,21 @@
-
+from sklearn.metrics import pair_confusion_matrix
 
 
 def resolve():
-    A,B,C = map(int,input().split())
-    ans = 0
-    while True:
-        if A%2 or B%2 or C%2:
-            print(ans)
-            break
-        elif A == B and B == C:
-            print(-1)
-            break
-        a = (B+C)//2
-        b = (A+C)//2
-        c = (A+B)//2
-        A,B,C = a,b,c
-        ans += 1
+    N,K = map(int,input().split())
+    a = N%K
+    b = K - a
+    ans = min(a,b)
+    print(ans)
+
+
+
+
+
+
+
+
+
 
 import sys
 from io import StringIO
@@ -33,20 +33,30 @@ class TestClass(unittest.TestCase):
         self.assertEqual(out, output)
 
     def test_入力例_1(self):
-        input = """4 12 20"""
-        output = """3"""
+        input = """7 4"""
+        output = """1"""
         self.assertIO(input, output)
 
     def test_入力例_2(self):
-        input = """14 14 14"""
-        output = """-1"""
+        input = """2 6"""
+        output = """2"""
         self.assertIO(input, output)
 
     def test_入力例_3(self):
-        input = """454 414 444"""
-        output = """1"""
+        input = """1000000000000000000 1"""
+        output = """0"""
         self.assertIO(input, output)
 
 
 if __name__ == "__main__":
     unittest.main()
+
+
+
+
+
+
+
+
+
+
