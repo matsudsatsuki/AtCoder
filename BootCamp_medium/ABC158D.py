@@ -1,6 +1,4 @@
 
-
-
 def resolve():
     from collections import deque
     S = input()
