@@ -1,11 +1,30 @@
 def resolve():
     N = int(input())
-    A = list(map(int,input().split()))
-    B = list(map(int,input().split()))
-    a_sum = sum(A)
-    diff = [0]*N
-    
-    
+    alst = list(map(int, input().split()))
+    blst = list(map(int, input().split()))
+    xlst = []
+    ylst = []
+    for a, b in zip(alst, blst):
+        if a < b:
+            xlst.append(b - a)
+        if a > b:
+            ylst.append(a - b)
+
+    total = sum(xlst)
+    ans = len(xlst)
+    ylst.sort(reverse=True)
+    if total == 0:
+        print(ans)
+    else:
+        for y in ylst:
+            total -= y
+            ans += 1
+            if total <= 0:
+                print(ans)
+                break
+        else:
+            print(-1)
+        
         
 
 
