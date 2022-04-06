@@ -1,5 +1,18 @@
+import enum
+
+
 def resolve():
         H,W,N = map(int,input().split())
+        X,Y = [],[]
+        for i in range(N):
+                a,b = map(int,input().split())
+                X.append(a)
+                Y.append(b)
+        x_d = {x:i+1 for i,x in enumerate(sorted(list(set(X))))}
+        y_d = {y:i+1 for i,y in enumerate(sorted(list(set(Y))))}
+        for i in range(N):
+                print(x_d[X[i]],y_d[Y[i]])
+
         
 
 
