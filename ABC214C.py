@@ -1,18 +1,12 @@
 def resolve():
-    N = int(input())
-    S = list(map(int,input().split()))
-    T = list(map(int,input().split()))
-    if N == 1:
-        print(T[0])
-        exit()
-    inf = float('inf')
-    p = [inf]*N
-    p[0] = T[0]
-    for i in range(1,N):
-        p[i] = min(S[i-1]+p[i-1],T[i])
-    for a in p:
-        print(a)
-    
+        N = int(input())
+        S = list(map(int,input().split()))
+        T = list(map(int,input().split()))
+        for i in range(N*2):
+                T[(i+1)%N] = min(S[i%N]+T[i%N],T[(i+1)%N])
+        for a in T:
+                print(a)
+
 
 
 
