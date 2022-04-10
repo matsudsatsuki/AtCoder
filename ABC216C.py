@@ -5,22 +5,16 @@ from itertools import count
 
 def resolve():
     N = int(input())
-    if N == 1:
-        print('A')
-    elif N == 2:
-        print('AA')
-    else:
-        S = 'AA'
-        N -= 2
-        count = 1
-        while N > 0:
-            if N < count*2:
-                S += 'B'
-                N -= count
-                count *= 2
-            else:
-                S += 'A'*N
-    print(S)
+    ans = ''
+    while N:
+        if N % 2 == 0:
+            ans += 'B'
+            N //= 2
+        else:
+            ans += 'A'
+            N -= 1
+    ans = list(reversed(ans))
+    print(''.join(ans))
             
 
 
