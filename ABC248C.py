@@ -1,3 +1,4 @@
+import enum
 from itertools import combinations, count
 from math import factorial
 
@@ -7,11 +8,28 @@ def resolve():
     import math
     N,M,K = map(int,input().split())
     mod = 998244353
-    n = []
-    count = 0
+
+    dp = [[0]*(K+1)for _ in range(N+1)]
+    dp[0][0] = 1
+    for i in range(N):
+        for j in range(K):
+            for k in range(1,M+1):
+                if j+k <= K:
+                    dp[i+1][j+k] += dp[i][j]
+    ans = 0
+    for i in range(1,K+1):
+        ans += dp[N][i]
+    print(ans%mod)
+    #print(dp[N-1][K+1]%mod)   
+
     
-    for i in range(1,M+1):
-        n.append(i)
+    
+
+    
+    
+    
+    
+
     
     
 
