@@ -1,18 +1,22 @@
 def resolve():
-    from collections import defaultdict
-    d = defaultdict(int)
-    N = int(input())
-    A = list(map(int,input().split()))
-    for a in A:
-        d[a] += 1
-    #print(d)
-    Q = int(input())
-    for _ in range(Q):
-        l,r,x = map(int,input().split())
-        if x in A[l-1:r]:
-            print(d[x])
-        else:
-            print(0)
+    N=int(input())
+    A=list(map(int,input().split()))
+    Q=int(input())
+    ANS=[0]*Q
+    C=[0]*(N+1)
+    que=[[] for i in range(N)]
+    for i in range(Q):
+            l,r,x=map(int,input().split())
+            l-=1
+            if l:
+
+                que[l-1].append((i,x,-1))
+            que[r-1].append((i,x,1))
+    for i in range(N):
+        C[A[i]]+=1
+        for j in range(len(que[i])):
+                ANS[que[i][j][0]]+=C[que[i][j][1]]*que[i][j][2]
+    print(*ANS,sep='\n')
         
 
 
